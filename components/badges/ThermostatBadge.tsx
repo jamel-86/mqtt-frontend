@@ -1,5 +1,6 @@
 // create a component that will be used in the frontend/components/badges/ThermostatBadge.tsx file
 import React from "react";
+
 import { RoundArrowUpIcon } from "@/components/common/icons";
 import { HumidityIcon } from "@/components/common/icons";
 
@@ -18,7 +19,7 @@ export default function ThermostatBadge() {
             </div>
           </div>
           <div className="flex justify-center items-center absolute left-12 top-[44.66px]">
-            <RoundArrowUpIcon width={17} height={17} />
+            <RoundArrowUpIcon height={17} width={17} />
           </div>
         </div>
       </div>

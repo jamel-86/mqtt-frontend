@@ -1,7 +1,9 @@
 import React from "react";
-import Badge from "./badges/Badge";
+
 import { Icons } from "./common/icons";
-import { badges } from "@/config/constants";
+import Badge from "./badges/Badge";
+
+import data from "@/config/items.json";
 
 const renderIcon = (
   iconName: string,
@@ -10,6 +12,7 @@ const renderIcon = (
   width: number
 ) => {
   const IconComponent = Icons[iconName];
+
   return IconComponent ? (
     <IconComponent status={status} height={height} width={width} />
   ) : null;
@@ -17,14 +20,14 @@ const renderIcon = (
 
 const FavoriteBadges = ({ override }: { override?: React.CSSProperties }) => {
   const renderBadgeCards = () => {
-    return badges.map((badge, index) => (
+    return data.badges.map((badge, index) => (
       <Badge
         key={index}
-        title={badge.title}
         icon={renderIcon(badge.icon, badge.status, badge.height, badge.width)}
         status={badge.status}
         statusActive={badge.statusActive}
         statusInactive={badge.statusInactive}
+        title={badge.title}
       />
     ));
   };
@@ -32,9 +35,11 @@ const FavoriteBadges = ({ override }: { override?: React.CSSProperties }) => {
   const groupedBadgeCards = () => {
     const badgeCards = renderBadgeCards();
     const groupedCards: JSX.Element[][] = [];
+
     for (let i = 0; i < badgeCards.length; i += 6) {
       groupedCards.push(badgeCards.slice(i, i + 6));
     }
+
     return groupedCards;
   };
 

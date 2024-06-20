@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Icons } from "./common/icons";
-import { accessories } from "@/config/constants";
+
 import { AccessoryCard } from "./common/AccessoryCard";
+import { Icons } from "./common/icons";
+
+import data from "@/config/items.json";
 
 const renderIcon = (
   iconName: string,
@@ -10,8 +12,9 @@ const renderIcon = (
   width: number
 ) => {
   const IconComponent = Icons[iconName];
+
   return IconComponent ? (
-    <IconComponent status={status} height={height} width={width} />
+    <IconComponent height={height} status={status} width={width} />
   ) : null;
 };
 
@@ -28,7 +31,7 @@ const FavoriteAccessories = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
-  const totalPages = Math.ceil(accessories.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(data.accessories.length / ITEMS_PER_PAGE);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
@@ -41,7 +44,7 @@ const FavoriteAccessories = ({
   const renderCards = () => {
     const start = currentPage * ITEMS_PER_PAGE;
     const end = start + ITEMS_PER_PAGE;
-    const currentItems = accessories.slice(start, end);
+    const currentItems = data.accessories.slice(start, end);
 
     return currentItems
       .reduce<JSX.Element[][]>((acc, accessory, index) => {
@@ -49,8 +52,6 @@ const FavoriteAccessories = ({
         acc[acc.length - 1].push(
           <AccessoryCard
             key={index}
-            name={accessory.name}
-            inactiveTitle={accessory.inactiveTitle}
             activeTitle={accessory.activeTitle}
             icon={renderIcon(
               accessory.icon,
@@ -58,8 +59,17 @@ const FavoriteAccessories = ({
               accessory.height,
               accessory.width
             )}
+            inactiveTitle={accessory.inactiveTitle}
             initialState={accessory.initialState}
+            name={accessory.name}
             type={accessory.type}
+            onClick={
+              accessory.type === "light"
+                ? onLightLongPress
+                : accessory.type === "thermostat"
+                  ? onThermostatLongPress
+                  : undefined
+            }
             onLongPress={
               accessory.type === "thermostat"
                 ? onThermostatLongPress
@@ -67,13 +77,13 @@ const FavoriteAccessories = ({
                   ? onLightLongPress
                   : undefined
             }
-            onClick={undefined}
           />
         );
+
         return acc;
       }, [])
       .map((group, i) => (
-        <div className="flex flex-wrap items-start gap-2 mt-2" key={i}>
+        <div key={i} className="flex flex-wrap items-start gap-2 mt-2">
           {group}
         </div>
       ));
@@ -88,19 +98,19 @@ const FavoriteAccessories = ({
         Favorite Accessories
       </p>
       <div className="flex flex-col items-start gap-1.5">{renderCards()}</div>
-      {accessories.length > ITEMS_PER_PAGE && (
+      {data.accessories.length > ITEMS_PER_PAGE && (
         <div className="flex justify-between w-full mt-4">
           <button
-            onClick={handlePrevPage}
-            disabled={currentPage === 0}
             className="bg-gray-500 text-white py-2 px-4 rounded disabled:opacity-50"
+            disabled={currentPage === 0}
+            onClick={handlePrevPage}
           >
             Previous
           </button>
           <button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages - 1}
             className="bg-gray-500 text-white py-2 px-4 rounded disabled:opacity-50"
+            disabled={currentPage === totalPages - 1}
+            onClick={handleNextPage}
           >
             Next
           </button>

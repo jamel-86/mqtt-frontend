@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+
 import mqttClient from "@/services/mqttClient"; // Adjust the path as necessary
 import MqttConfig from "@/config/mqttConfig.json"; // Adjust the path as necessary
 
@@ -40,6 +41,7 @@ export const AccessoryCard = ({
   const publishStateToMQTT = (newState: number) => {
     const topic = `${publishPrefix}${formattedName}${publishSuffix}`;
     const message = newState === 1 ? "1" : "0";
+
     if (mqttClient) {
       mqttClient.publish(topic, message);
       console.log(`Published to ${topic}: ${message}`);
@@ -48,6 +50,7 @@ export const AccessoryCard = ({
 
   const subscribeToMQTT = () => {
     const topic = `${subscribePrefix}${formattedName}${subscribeSuffix}`;
+
     if (mqttClient) {
       mqttClient.subscribe(topic, (err) => {
         if (!err) {
@@ -69,6 +72,7 @@ export const AccessoryCard = ({
     // Cleanup subscription on unmount
     return () => {
       const topic = `${subscribePrefix}${formattedName}${subscribeSuffix}`;
+
       if (mqttClient) {
         mqttClient.unsubscribe(topic);
         console.log(`Unsubscribed from ${topic}`);
@@ -80,7 +84,9 @@ export const AccessoryCard = ({
     if (controllable) {
       setState((prevState) => {
         const newState = prevState === 1 ? 0 : 1;
+
         publishStateToMQTT(newState);
+
         return newState;
       });
     }

@@ -1,10 +1,12 @@
 import * as React from "react";
-import { SmartHomeIcon } from "@/components/common/icons";
-import FavoriteScenes from "@/components/FavoriteScenes";
-import FavoriteBadges from "@/components/FavoriteBadges";
+
 import FavoriteAccessories from "../FavoriteAccessories";
 import ThermostatModal from "../modals/ThermostatModal";
 import DimmerModal from "../modals/DimmerModal";
+
+import { SmartHomeIcon } from "@/components/common/icons";
+import FavoriteScenes from "@/components/FavoriteScenes";
+import FavoriteBadges from "@/components/FavoriteBadges";
 
 const HomeScreen = ({ override }: { override?: React.CSSProperties }) => {
   const [isThermostatModalOpen, setIsThermostatModalOpen] =
@@ -59,12 +61,12 @@ const HomeScreen = ({ override }: { override?: React.CSSProperties }) => {
         onRequestClose={closeThermostatModal}
       />
       <DimmerModal
-        name={currentAccessoryName}
-        isOpen={isDimmerModalOpen}
-        onRequestClose={closeDimmerModal}
         color="#ffc107"
         initialValue={50}
+        isOpen={isDimmerModalOpen}
+        name={currentAccessoryName}
         onChange={() => {}}
+        onRequestClose={closeDimmerModal}
       />
     </div>
   );
