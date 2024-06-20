@@ -1,6 +1,8 @@
 // create a new layout for the favorites page that will be used in the frontend/pages/favorites.tsx file
 import { Link } from "@nextui-org/react";
+
 import { Head } from "./head";
+
 import { Navbar } from "@/components/common/navbar";
 
 export default function FavoritesLayout({
@@ -19,11 +21,11 @@ export default function FavoritesLayout({
         <Link
           isExternal
           className="flex items-center gap-1 text-current"
-          href="https://nextui-docs-v2.vercel.app?utm_source=next-pages-template"
+          href="https://github.com/jamel-86"
           title="nextui.org homepage"
         >
-          <span className="text-default-600">Powered by</span>
-          <p className="text-primary">NextUI</p>
+          <span className="text-default-600">Created with ❤️</span>
+          <p className="text-primary">By Jamel</p>
         </Link>
       </footer>
     </div>

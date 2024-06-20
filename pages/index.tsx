@@ -11,14 +11,12 @@ export default function IndexPage() {
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title()}>Make&nbsp;</h1>
-          <h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
+          <h1 className={title()}>A&nbsp;</h1>
+          <h1 className={title({ color: "violet" })}>MQTT&nbsp;</h1>
           <br />
-          <h1 className={title()}>
-            websites regardless of your design experience.
-          </h1>
+          <h1 className={title()}>dashboard</h1>
           <h4 className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern React UI library.
+            Fast and reactive dashboard for IoT devices
           </h4>
         </div>
 
@@ -47,8 +45,7 @@ export default function IndexPage() {
         <div className="mt-8">
           <Snippet hideCopyButton hideSymbol variant="bordered">
             <span>
-              Get started by editing{" "}
-              <Code color="primary">pages/index.tsx</Code>
+              Add your devices in <Code color="primary">config/items.json</Code>
             </span>
           </Snippet>
         </div>

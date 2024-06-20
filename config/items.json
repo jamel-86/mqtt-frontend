@@ -1,10 +1,7 @@
 {
   "scenes": [
-    { "title": "Home", "icon": "ImHomeIcon", "status": 0 },
-    { "title": "Away", "icon": "ImAwayIcon", "status": 1 },
-    { "title": "Morning", "icon": "ImHomeIcon", "status": 0 },
     { "title": "Home", "icon": "ImHomeIcon", "status": 1 },
-    { "title": "Away", "icon": "ImAwayIcon", "status": 1 }
+    { "title": "Away", "icon": "ImAwayIcon", "status": 0 }
   ],
   "badges": [
     {
@@ -69,6 +66,7 @@
       "inactiveTitle": "Closed",
       "activeTitle": "Open",
       "icon": "GarageIcon",
+      "controllable": false,
       "height": 25,
       "width": 25,
       "type": "light"
@@ -79,6 +77,7 @@
       "inactiveTitle": "Locked",
       "activeTitle": "Unlocked",
       "icon": "LockIcon",
+      "controllable": false,
       "height": 25,
       "width": 25,
       "type": "light"

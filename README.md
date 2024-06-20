@@ -1,12 +1,8 @@
-# Next.js & NextUI Template
+# MQTT DASHBOARD
 
-This is a template for creating applications using Next.js 14 (pages directory) and NextUI (v2).
+A FULLY FUNCTIONAL MQTT DASHBOARD
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-pages-template)
-
->Note: Since Next.js 14, the pages router is recommend migrating to the [new App Router](https://nextjs.org/docs/app) to leverage React's latest features
->
->Read more: [Pages Router](https://nextjs.org/docs/pages)
+Work still in progress...
 
 ## Technologies Used
 

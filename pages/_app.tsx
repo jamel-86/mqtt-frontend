@@ -1,9 +1,11 @@
 // pages/_app.tsx or pages/_app.js
 import type { AppProps } from "next/app";
+
 import { useEffect, useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useRouter } from "next/router";
+
 import mqttClient from "@/services/mqttClient";
 import { fontSans, fontMono } from "@/config/fonts";
 import "@/styles/globals.css";
@@ -19,7 +21,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
-    // Ensure the MQTT client is connected when the app is mounted
     if (mqttClient) {
       mqttClient.on("connect", () => {
         console.log("Connected to MQTT broker");

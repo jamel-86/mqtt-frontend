@@ -53,6 +53,7 @@ const FavoriteAccessories = ({
           <AccessoryCard
             key={index}
             activeTitle={accessory.activeTitle}
+            controllable={accessory.controllable}
             icon={renderIcon(
               accessory.icon,
               accessory.initialState,
