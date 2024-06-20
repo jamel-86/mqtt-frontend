@@ -1,0 +1,12 @@
+{
+  "host": "ws://192.168.50.220",
+  "port": 1884,
+  "username": "frontend",
+  "password": "frontend",
+  "clientId": "frontend",
+  "protocolId": "MQTT",
+  "publishPrefix": "ee/bridge/006c00010111/",
+  "publishSuffix": "/cmd",
+  "subscribePrefix": "ee/bridge/006c00010111/",
+  "subscribeSuffix": "/sts"
+}
