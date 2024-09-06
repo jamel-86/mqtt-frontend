@@ -16,10 +16,14 @@ Work still in progress...
 
 ## How to Use
 
-To create a new project based on this template using `create-next-app`, run the following command:
+```
+git clone https://github.com/jamel-86/mqtt-frontend
+```
 
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-pages-template
+run the app
+
+```
+npm run dev
 ```
 
 ### Install dependencies
